@@ -13,6 +13,6 @@
 
 - [ ] Entity设置
 - [ ] 数据库建表
-- [ ] DAO层
+- [x] DAO层
 - [ ] Service层
-- [ ] 前端：exe原生/exe内嵌网页
+- [ ] 前端：JavaFX
