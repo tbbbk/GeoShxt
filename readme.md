@@ -11,8 +11,8 @@
 
 # 目前进度
 
-- [ ] Entity设置
-- [ ] 数据库建表
+- [x] Entity设置
+- [x] 数据库建表
 - [x] DAO层
-- [ ] Service层
+- [x] Service层
 - [ ] 前端：JavaFX
