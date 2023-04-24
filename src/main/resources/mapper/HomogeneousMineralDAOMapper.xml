@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.HomogeneousMineralDAO">
+    <insert id="insert" parameterType="entity.HomogeneousMineral" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO homogeneousMineral
+        (mineralName, reflectanceVisualInspectionLevel, visualClassificationOfReflectivity,
+         internalReflection, markHardness, mohsHardness, vickersHardness, reflectionRotationAngle)
+        VALUES (#{name}, #{reflectanceVisualInspectionLevel}, #{visualClassificationOfReflectivity},
+                #{internalReflection}, #{markHardness}, #{mohsHardness}, #{vickersHardness},
+                #{reflectionRotationAngle})
+    </insert>
+
+    <update id="update" parameterType="entity.HomogeneousMineral">
+        UPDATE
+            homogeneousMineral
+        SET mineralName=#{name},
+            reflectanceVisualInspectionLevel=#{reflectanceVisualInspectionLevel},
+            visualClassificationOfReflectivity=#{visualClassificationOfReflectivity},
+            internalReflection=#{internalReflection},
+            markHardness=#{markHardness},
+            mohsHardness=#{mohsHardness},
+            vickersHardness=#{vickersHardness},
+            reflectionRotationAngle=#{reflectionRotationAngle}
+        WHERE mineralName = #{name}
+    </update>
+
+    <delete id="delete">
+        DELETE
+        FROM homogeneousMineral
+        WHERE id = #{id}
+    </delete>
+
+    <select id="selectAll" resultType="entity.HomogeneousMineral">
+        SELECT mineralName as name,
+               reflectanceVisualInspectionLevel,
+               visualClassificationOfReflectivity,
+               internalReflection,
+               markHardness,
+               mohsHardness,
+               vickersHardness,
+               reflectionRotationAngle
+        FROM homogeneousMineral
+    </select>
+
+    <select id="selectByCondition" resultType="entity.HomogeneousMineral" parameterType="entity.HomogeneousMineral">
+        SELECT mineralName as name,
+        reflectanceVisualInspectionLevel,
+        visualClassificationOfReflectivity,
+        internalReflection,
+        markHardness,
+        mohsHardness,
+        vickersHardness,
+        reflectionRotationAngle
+        FROM homogeneousMineral
+        <where>
+            <if test="name != null">
+                AND mineralName = #{name}
+            </if>
+            <if test="reflectanceVisualInspectionLevel != null">
+                AND reflectanceVisualInspectionLevel = #{reflectanceVisualInspectionLevel}
+            </if>
+            <if test="visualClassificationOfReflectivity != null">
+                AND visualClassificationOfReflectivity = #{visualClassificationOfReflectivity}
+            </if>
+            <if test="internalReflection != null">
+                AND internalReflection = #{internalReflection}
+            </if>
+            <if test="markHardness != null">
+                AND markHardness = #{markHardness}
+            </if>
+            <if test="mohsHardness != null">
+                AND mohsHardness = #{mohsHardness}
+            </if>
+            <if test="vickersHardness != null">
+                AND vickersHardness = #{vickersHardness}
+            </if>
+            <if test="reflectionRotationAngle != null">
+                AND　reflectionRotationAngle = #{reflectionRotationAngle}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.HeterogeneousMineralDAO">
+    <insert id="insert" parameterType="entity.HeterogeneousMineral" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO heterogeneousMineral
+        (mineralName, reflectanceVisualInspectionLevel, visualClassificationOfReflectivity, doubleReflection,
+         internalReflection, markHardness, mohsHardness, vickersHardness, Rotation, _Match, lightSymbol,
+         non_HomogeneousViewRotationAngle, Dispersion, non_HomogeneousVisualRotationColor, rotationalDispersion)
+        VALUES (#{name}, #{reflectanceVisualInspectionLevel}, #{visualClassificationOfReflectivity},
+                #{doubleReflection}, #{internalReflection}, #{markHardness}, #{mohsHardness}, #{vickersHardness},
+                #{Rotation}, #{Match}, #{lightSymbol}, #{non_HomogeneousViewRotationAngle}, #{Dispersion},
+                #{non_HomogeneousVisualRotationColor}, #{rotationalDispersion})
+    </insert>
+
+    <update id="update" parameterType="dao.HeterogeneousMineralDAO">
+        UPDATE
+            heterogeneousMineral
+        SET mineralName=#{name},
+            reflectanceVisualInspectionLevel=#{reflectanceVisualInspectionLevel},
+            visualClassificationOfReflectivity=#{visualClassificationOfReflectivity},
+            doubleReflection=#{doubleReflection},
+            internalReflection=#{internalReflection},
+            markHardness=#{markHardness},
+            mohsHardness=#{mohsHardness},
+            vickersHardness=#{vickersHardness},
+            Rotation=#{Rotation},
+            _Match=#{Match},
+            lightSymbol=#{lightSymbol},
+            non_HomogeneousViewRotationAngle=#{non_HomogeneousViewRotationAngle},
+            dispersion=#{Dispersion},
+            non_HomogeneousVisualRotationColor=#{non_HomogeneousVisualRotationColor},
+            rotationalDispersion=#{rotationalDispersion}
+        WHERE mineralName = #{name}
+    </update>
+
+    <delete id="delete">
+        DELETE
+        FROM heterogeneousMineral
+        WHERE id = #{id}
+    </delete>
+
+    <select id="selectAll" resultType="entity.HeterogeneousMineral">
+        SELECT mineralName as name,
+               reflectanceVisualInspectionLevel,
+               visualClassificationOfReflectivity,
+               doubleReflection,
+               internalReflection,
+               markHardness,
+               mohsHardness,
+               vickersHardness,
+               Rotation,
+               _Match      as `Match`,
+               lightSymbol,
+               non_HomogeneousViewRotationAngle,
+               Dispersion,
+               non_HomogeneousVisualRotationColor,
+               rotationalDispersion
+        FROM heterogeneousMineral
+    </select>
+
+    <select id="selectByCondition" resultType="entity.HeterogeneousMineral" parameterType="entity.HeterogeneousMineral">
+        SELECT mineralName as name,
+        reflectanceVisualInspectionLevel,
+        visualClassificationOfReflectivity,
+        doubleReflection,
+        internalReflection,
+        markHardness,
+        mohsHardness,
+        vickersHardness,
+        Rotation,
+        _Match as `Match`,
+        lightSymbol,
+        non_HomogeneousViewRotationAngle,
+        Dispersion,
+        non_HomogeneousVisualRotationColor,
+        rotationalDispersion
+        FROM heterogeneousMineral
+        <where>
+            <if test="name != null">
+                AND mineralName = #{name}
+            </if>
+            <if test="reflectanceVisualInspectionLevel != null">
+                AND reflectanceVisualInspectionLevel = #{reflectanceVisualInspectionLevel}
+            </if>
+            <if test="visualClassificationOfReflectivity != null">
+                AND visualClassificationOfReflectivity = #{visualClassificationOfReflectivity}
+            </if>
+            <if test="doubleReflection != null">
+                AND doubleReflection = #{doubleReflection}
+            </if>
+            <if test="internalReflection != null">
+                AND internalReflection = #{internalReflection}
+            </if>
+            <if test="markHardness != null">
+                AND markHardness = #{markHardness}
+            </if>
+            <if test="mohsHardness != null">
+                AND mohsHardness = #{mohsHardness}
+            </if>
+            <if test="vickersHardness != null">
+                AND vickersHardness = #{vickersHardness}
+            </if>
+            <if test="Rotation != null">
+                AND Rotation = #{Rotation}
+            </if>
+            <if test="Match != null">
+                AND _Match = #{Match}
+            </if>
+            <if test="lightSymbol != null">
+                AND lightSymbol = #{lightSymbol}
+            </if>
+            <if test="non_HomogeneousViewRotationAngle != null">
+                AND non_HomogeneousViewRotationAngle =
+                #{non_HomogeneousViewRotationAngle}
+            </if>
+            <if test="dispersion != null">
+                AND dispersion = #{Dispersion}
+            </if>
+            <if test="non_HomogeneousVisualRotationColor != null">
+                AND non_HomogeneousVisualRotationColor =
+                #{non_HomogeneousVisualRotationColor}
+            </if>
+            <if test="rotationalDispersion != null">
+                AND rotationalDispersion = #{rotationalDispersion}
+            </if>
+        </where>
+    </select>
+</mapper>
