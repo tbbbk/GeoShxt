@@ -41,10 +41,10 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
     </aop:config>
     <!--添加ServiceBean-->
-    <bean id="HeterogeneousMineralService" class="service.HeterogeneousMineralServiceImpl">
+    <bean id="heterogeneousMineralService" class="service.HeterogeneousMineralServiceImpl">
         <property name="heterogeneousMineralDAO" ref="heterogeneousMineralDAO"/>
     </bean>
-    <bean id="HomogeneousMineralService" class="service.HomogeneousMineralServiceImpl">
+    <bean id="homogeneousMineralService" class="service.HomogeneousMineralServiceImpl">
         <property name="homogeneousMineralDAO" ref="homogeneousMineralDAO"/>
     </bean>
 </beans>

@@ -6,24 +6,27 @@
 <mapper namespace="dao.HomogeneousMineralDAO">
     <insert id="insert" parameterType="entity.HomogeneousMineral" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO homogeneousMineral
-        (mineralName, reflectanceVisualInspectionLevel, visualClassificationOfReflectivity,
-         internalReflection, markHardness, mohsHardness, vickersHardness, reflectionRotationAngle)
-        VALUES (#{name}, #{reflectanceVisualInspectionLevel}, #{visualClassificationOfReflectivity},
-                #{internalReflection}, #{markHardness}, #{mohsHardness}, #{vickersHardness},
-                #{reflectionRotationAngle})
+        (mineralName, heterOrHomo, reflectanceVisualInspectionLevel, visualClassificationOfReflectivity,
+         doubleReflection, internalReflection, markHardness, mohsHardness, vickersHardness, reflectionRotationAngle, Dispersion)
+        VALUES (#{name}, #{heterOrHomo}, #{reflectanceVisualInspectionLevel}, #{visualClassificationOfReflectivity},
+                #{doubleReflection}, #{internalReflection}, #{markHardness}, #{mohsHardness}, #{vickersHardness},
+                #{reflectionRotationAngle}, #{Dispersion})
     </insert>
 
     <update id="update" parameterType="entity.HomogeneousMineral">
         UPDATE
             homogeneousMineral
         SET mineralName=#{name},
+            heterOrHomo=#{heterOrHomo},
             reflectanceVisualInspectionLevel=#{reflectanceVisualInspectionLevel},
             visualClassificationOfReflectivity=#{visualClassificationOfReflectivity},
+            doubleReflection=#{doubleReflection},
             internalReflection=#{internalReflection},
             markHardness=#{markHardness},
             mohsHardness=#{mohsHardness},
             vickersHardness=#{vickersHardness},
-            reflectionRotationAngle=#{reflectionRotationAngle}
+            reflectionRotationAngle=#{reflectionRotationAngle},
+            Dispersion=#{Dispersion}
         WHERE mineralName = #{name}
     </update>
 
@@ -35,35 +38,47 @@
 
     <select id="selectAll" resultType="entity.HomogeneousMineral">
         SELECT mineralName as name,
+               heterOrHomo,
                reflectanceVisualInspectionLevel,
                visualClassificationOfReflectivity,
+               doubleReflection,
                internalReflection,
                markHardness,
                mohsHardness,
                vickersHardness,
-               reflectionRotationAngle
+               reflectionRotationAngle,
+               Dispersion
         FROM homogeneousMineral
     </select>
 
     <select id="selectByCondition" resultType="entity.HomogeneousMineral" parameterType="entity.HomogeneousMineral">
         SELECT mineralName as name,
+        heterOrHomo,
         reflectanceVisualInspectionLevel,
         visualClassificationOfReflectivity,
+        doubleReflection,
         internalReflection,
         markHardness,
         mohsHardness,
         vickersHardness,
-        reflectionRotationAngle
+        reflectionRotationAngle,
+        Dispersion
         FROM homogeneousMineral
         <where>
             <if test="name != null">
                 AND mineralName = #{name}
+            </if>
+            <if test="heterOrHomo != null">
+                AND heterOrHomo = #{heterOrHomo}
             </if>
             <if test="reflectanceVisualInspectionLevel != null">
                 AND reflectanceVisualInspectionLevel = #{reflectanceVisualInspectionLevel}
             </if>
             <if test="visualClassificationOfReflectivity != null">
                 AND visualClassificationOfReflectivity = #{visualClassificationOfReflectivity}
+            </if>
+            <if test="doubleReflection != null">
+                AND doubleReflection = #{doubleReflection}
             </if>
             <if test="internalReflection != null">
                 AND internalReflection = #{internalReflection}
@@ -79,6 +94,9 @@
             </if>
             <if test="reflectionRotationAngle != null">
                 AND　reflectionRotationAngle = #{reflectionRotationAngle}
+            </if>
+            <if test="Dispersion != null">
+                AND Dispersion = #{Dispersion}
             </if>
         </where>
     </select>

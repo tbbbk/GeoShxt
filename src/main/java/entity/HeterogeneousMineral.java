@@ -4,6 +4,8 @@ package entity;
 public class HeterogeneousMineral {
     private int id;
     private String name;
+    //均非性
+    private String homoOrHeter;
     //反射率视测等级
     private String reflectanceVisualInspectionLevel;
     //反射率视测分级

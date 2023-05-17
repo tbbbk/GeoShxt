@@ -26,13 +26,16 @@ CREATE TABLE IF NOT EXISTS `homogeneousMineral`
 (
     `id`                                 INT auto_increment,
     `mineralName`                        varchar(255) NOT NULL,
+    `heterOrHomo`                        varchar(255),
     `reflectanceVisualInspectionLevel`   varchar(255),
     `visualClassificationOfReflectivity` varchar(255),
+    `doubleReflection`                   varchar(255),
     `internalReflection`                 varchar(255),
     `markHardness`                       varchar(255),
     `mohsHardness`                       varchar(255),
     `vickersHardness`                    varchar(255),
     `reflectionRotationAngle`            varchar(255),
+    `Dispersion`                         varchar(255),
     PRIMARY KEY (`id`),
     UNIQUE (`mineralName`)
 ) ENGINE = InnoDB
