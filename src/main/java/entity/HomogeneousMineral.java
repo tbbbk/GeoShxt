@@ -142,13 +142,16 @@ public class HomogeneousMineral {
         return "HomogeneousMineral{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", heterOrHomo='" + heterOrHomo + '\'' +
                 ", reflectanceVisualInspectionLevel='" + reflectanceVisualInspectionLevel + '\'' +
                 ", visualClassificationOfReflectivity='" + visualClassificationOfReflectivity + '\'' +
+                ", doubleReflection='" + doubleReflection + '\'' +
                 ", internalReflection='" + internalReflection + '\'' +
                 ", markHardness='" + markHardness + '\'' +
                 ", mohsHardness='" + mohsHardness + '\'' +
                 ", vickersHardness='" + vickersHardness + '\'' +
                 ", reflectionRotationAngle='" + reflectionRotationAngle + '\'' +
+                ", Dispersion='" + Dispersion + '\'' +
                 '}';
     }
 }

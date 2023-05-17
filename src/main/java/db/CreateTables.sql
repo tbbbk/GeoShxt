@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS `heterogeneousMineral`
 (
     `id`                                 INT auto_increment,
     `mineralName`                        varchar(255) NOT NULL,
+    `homoOrHeter`                        varchar(255),
     `reflectanceVisualInspectionLevel`   varchar(255),
     `visualClassificationOfReflectivity` varchar(255),
     `doubleReflection`                   varchar(255),
@@ -16,7 +17,6 @@ CREATE TABLE IF NOT EXISTS `heterogeneousMineral`
     `non_HomogeneousViewRotationAngle`   varchar(255),
     `Dispersion`                         varchar(255),
     `non_HomogeneousVisualRotationColor` varchar(255),
-    `rotationalDispersion`               varchar(255),
     PRIMARY KEY (`id`),
     UNIQUE (`mineralName`)
 ) ENGINE = InnoDB

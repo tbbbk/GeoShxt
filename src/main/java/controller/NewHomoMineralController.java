@@ -135,25 +135,41 @@ public class NewHomoMineralController implements Initializable {
                     reflectanceVisualInspectionLevel.getText(),
                     Dispersion.getText()};
             if (arg[0].equals("")) {
-                Platform.runLater(() -> {
-                    try {
-                        AnchorPane root = FXMLLoader.load(getClass().getResource("/ui/IncompleteAlert.fxml"));
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(root, 200, 200));
-                        stage.setResizable(false);
-                        stage.show();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+                show("IncompleteAlert");
             } else {
                 HomogeneousMineral homogeneousMineral = new HomogeneousMineral(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7], arg[8], arg[9], arg[10]);
                 ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
                 HomogeneousMineralService homogeneousMineralService = (HomogeneousMineralService) context.getBean("homogeneousMineralService");
-                homogeneousMineralService.insert(homogeneousMineral);
+                int result = 0;
+                try {
+                    result = homogeneousMineralService.insert(homogeneousMineral);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (result != 1) {
+                    show("failure");
+                    this.clear(event);
+                } else {
+                    show("success");
+                    this.clear(event);
+                }
             }
         });
         thread.start();
+    }
+
+    public void show(String s) {
+        Platform.runLater(() -> {
+            try {
+                AnchorPane root = FXMLLoader.load(getClass().getResource("/ui/" + s + ".fxml"));
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root, 200, 200));
+                stage.setResizable(false);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @Override

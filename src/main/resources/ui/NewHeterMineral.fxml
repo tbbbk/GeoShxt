@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewHomoMineralController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewHeterMineralController">
    <children>
       <Text fill="#be2020" fontSmoothingType="LCD" layoutX="19.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="新增非均质矿物" textAlignment="CENTER" wrappingWidth="227.5">
          <font>
@@ -74,37 +74,37 @@
             <HBox alignment="CENTER" prefHeight="56.0" prefWidth="282.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="旋向" wrappingWidth="120.0" />
-                  <TextField fx:id="reflectionRotationAngle" prefHeight="25.0" prefWidth="410.0" />
+                  <TextField fx:id="Rotation" prefHeight="25.0" prefWidth="410.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="56.0" prefWidth="282.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="相符" wrappingWidth="120.0" />
-                  <TextField fx:id="Dispersion" prefHeight="25.0" prefWidth="368.0" />
+                  <TextField fx:id="Match" prefHeight="25.0" prefWidth="368.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="56.0" prefWidth="282.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="光符" wrappingWidth="120.0" />
-                  <TextField fx:id="Dispersion1" prefHeight="25.0" prefWidth="368.0" />
+                  <TextField fx:id="lightSymbol" prefHeight="25.0" prefWidth="368.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="56.0" prefWidth="282.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="非均质视旋转角" wrappingWidth="120.0" />
-                  <TextField fx:id="Dispersion2" prefHeight="25.0" prefWidth="368.0" />
+                  <TextField fx:id="non_HomogeneousViewRotationAngle" prefHeight="25.0" prefWidth="368.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="56.0" prefWidth="282.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="色散" wrappingWidth="120.0" />
-                  <TextField fx:id="Dispersion3" prefHeight="25.0" prefWidth="368.0" />
+                  <TextField fx:id="Dispersion" prefHeight="25.0" prefWidth="368.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="56.0" prefWidth="282.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="非均质视旋转色散" wrappingWidth="120.0" />
-                  <TextField fx:id="Dispersion31" prefHeight="25.0" prefWidth="368.0" />
+                  <TextField fx:id="non_HomogeneousVisualRotationColor" prefHeight="25.0" prefWidth="368.0" />
                </children>
             </HBox>
          </children>

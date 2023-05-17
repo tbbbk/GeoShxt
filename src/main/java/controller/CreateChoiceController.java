@@ -63,7 +63,20 @@ public class CreateChoiceController {
                     });
                     thread_1.start();
                 } else if (result.equals("非均质")) {
-                    
+                    Thread thread_2 = new Thread(() -> {
+                        Platform.runLater(() -> {
+                            try {
+                                Stage stage = (Stage) this.back.getScene().getWindow();
+                                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/NewHeterMineral.fxml"));
+                                Pane root = fxmlLoader.load();
+                                stage.setScene(new Scene(root, 600, 500));
+                                stage.show();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
+                    });
+                    thread_2.start();
                 }
             });
         });

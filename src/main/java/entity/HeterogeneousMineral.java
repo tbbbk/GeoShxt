@@ -30,10 +30,16 @@ public class HeterogeneousMineral {
     private String non_HomogeneousViewRotationAngle;
     //色散
     private String Dispersion;
-    //非均质视旋转色
+    //非均质视旋转色散
     private String non_HomogeneousVisualRotationColor;
-    //旋转色散
-    private String rotationalDispersion;
+
+    public String getHomoOrHeter() {
+        return homoOrHeter;
+    }
+
+    public void setHomoOrHeter(String homoOrHeter) {
+        this.homoOrHeter = homoOrHeter;
+    }
 
     public int getId() {
         return id;
@@ -155,19 +161,13 @@ public class HeterogeneousMineral {
         this.non_HomogeneousVisualRotationColor = non_HomogeneousVisualRotationColor;
     }
 
-    public String getRotationalDispersion() {
-        return rotationalDispersion;
-    }
-
-    public void setRotationalDispersion(String rotationalDispersion) {
-        this.rotationalDispersion = rotationalDispersion;
-    }
 
     public HeterogeneousMineral() {
     }
 
-    public HeterogeneousMineral(String name, String reflectanceVisualInspectionLevel, String visualClassificationOfReflectivity, String doubleReflection, String internalReflection, String markHardness, String mohsHardness, String vickersHardness, String rotation, String match, String lightSymbol, String non_HomogeneousViewRotationAngle, String dispersion, String non_HomogeneousVisualRotationColor, String rotationalDispersion) {
+    public HeterogeneousMineral(String name, String homoOrHeter, String reflectanceVisualInspectionLevel, String visualClassificationOfReflectivity, String doubleReflection, String internalReflection, String markHardness, String mohsHardness, String vickersHardness, String rotation, String match, String lightSymbol, String non_HomogeneousViewRotationAngle, String dispersion, String non_HomogeneousVisualRotationColor) {
         this.name = name;
+        this.homoOrHeter = homoOrHeter;
         this.reflectanceVisualInspectionLevel = reflectanceVisualInspectionLevel;
         this.visualClassificationOfReflectivity = visualClassificationOfReflectivity;
         this.doubleReflection = doubleReflection;
@@ -175,13 +175,12 @@ public class HeterogeneousMineral {
         this.markHardness = markHardness;
         this.mohsHardness = mohsHardness;
         this.vickersHardness = vickersHardness;
-        Rotation = rotation;
-        Match = match;
+        this.Rotation = rotation;
+        this.Match = match;
         this.lightSymbol = lightSymbol;
         this.non_HomogeneousViewRotationAngle = non_HomogeneousViewRotationAngle;
         this.Dispersion = dispersion;
         this.non_HomogeneousVisualRotationColor = non_HomogeneousVisualRotationColor;
-        this.rotationalDispersion = rotationalDispersion;
     }
 
     @Override
@@ -189,6 +188,7 @@ public class HeterogeneousMineral {
         return "HeterogeneousMineral{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", homoOrHeter='" + homoOrHeter + '\'' +
                 ", reflectanceVisualInspectionLevel='" + reflectanceVisualInspectionLevel + '\'' +
                 ", visualClassificationOfReflectivity='" + visualClassificationOfReflectivity + '\'' +
                 ", doubleReflection='" + doubleReflection + '\'' +
@@ -202,7 +202,6 @@ public class HeterogeneousMineral {
                 ", non_HomogeneousViewRotationAngle='" + non_HomogeneousViewRotationAngle + '\'' +
                 ", Dispersion='" + Dispersion + '\'' +
                 ", non_HomogeneousVisualRotationColor='" + non_HomogeneousVisualRotationColor + '\'' +
-                ", rotationalDispersion='" + rotationalDispersion + '\'' +
                 '}';
     }
 }

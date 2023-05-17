@@ -6,19 +6,20 @@
 <mapper namespace="dao.HeterogeneousMineralDAO">
     <insert id="insert" parameterType="entity.HeterogeneousMineral" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO heterogeneousMineral
-        (mineralName, reflectanceVisualInspectionLevel, visualClassificationOfReflectivity, doubleReflection,
+        (mineralName, homoOrHeter,reflectanceVisualInspectionLevel, visualClassificationOfReflectivity, doubleReflection,
          internalReflection, markHardness, mohsHardness, vickersHardness, Rotation, _Match, lightSymbol,
-         non_HomogeneousViewRotationAngle, Dispersion, non_HomogeneousVisualRotationColor, rotationalDispersion)
-        VALUES (#{name}, #{reflectanceVisualInspectionLevel}, #{visualClassificationOfReflectivity},
+         non_HomogeneousViewRotationAngle, Dispersion, non_HomogeneousVisualRotationColor)
+        VALUES (#{name}, #{homoOrHeter}, #{reflectanceVisualInspectionLevel}, #{visualClassificationOfReflectivity},
                 #{doubleReflection}, #{internalReflection}, #{markHardness}, #{mohsHardness}, #{vickersHardness},
                 #{Rotation}, #{Match}, #{lightSymbol}, #{non_HomogeneousViewRotationAngle}, #{Dispersion},
-                #{non_HomogeneousVisualRotationColor}, #{rotationalDispersion})
+                #{non_HomogeneousVisualRotationColor})
     </insert>
 
     <update id="update" parameterType="dao.HeterogeneousMineralDAO">
         UPDATE
             heterogeneousMineral
         SET mineralName=#{name},
+            homoOrHeter=#{homoOrHeter},
             reflectanceVisualInspectionLevel=#{reflectanceVisualInspectionLevel},
             visualClassificationOfReflectivity=#{visualClassificationOfReflectivity},
             doubleReflection=#{doubleReflection},
@@ -31,8 +32,7 @@
             lightSymbol=#{lightSymbol},
             non_HomogeneousViewRotationAngle=#{non_HomogeneousViewRotationAngle},
             dispersion=#{Dispersion},
-            non_HomogeneousVisualRotationColor=#{non_HomogeneousVisualRotationColor},
-            rotationalDispersion=#{rotationalDispersion}
+            non_HomogeneousVisualRotationColor=#{non_HomogeneousVisualRotationColor}
         WHERE mineralName = #{name}
     </update>
 
@@ -44,6 +44,7 @@
 
     <select id="selectAll" resultType="entity.HeterogeneousMineral">
         SELECT mineralName as name,
+               homoOrHeter,
                reflectanceVisualInspectionLevel,
                visualClassificationOfReflectivity,
                doubleReflection,
@@ -56,13 +57,13 @@
                lightSymbol,
                non_HomogeneousViewRotationAngle,
                Dispersion,
-               non_HomogeneousVisualRotationColor,
-               rotationalDispersion
+               non_HomogeneousVisualRotationColor
         FROM heterogeneousMineral
     </select>
 
     <select id="selectByCondition" resultType="entity.HeterogeneousMineral" parameterType="entity.HeterogeneousMineral">
         SELECT mineralName as name,
+        homoOrHeter,
         reflectanceVisualInspectionLevel,
         visualClassificationOfReflectivity,
         doubleReflection,
@@ -75,12 +76,14 @@
         lightSymbol,
         non_HomogeneousViewRotationAngle,
         Dispersion,
-        non_HomogeneousVisualRotationColor,
-        rotationalDispersion
+        non_HomogeneousVisualRotationColor
         FROM heterogeneousMineral
         <where>
             <if test="name != null">
                 AND mineralName = #{name}
+            </if>
+            <if test="homoOrHeter != null">
+                AND homoOrHeter = #{homoOrHeter}
             </if>
             <if test="reflectanceVisualInspectionLevel != null">
                 AND reflectanceVisualInspectionLevel = #{reflectanceVisualInspectionLevel}
@@ -122,9 +125,6 @@
             <if test="non_HomogeneousVisualRotationColor != null">
                 AND non_HomogeneousVisualRotationColor =
                 #{non_HomogeneousVisualRotationColor}
-            </if>
-            <if test="rotationalDispersion != null">
-                AND rotationalDispersion = #{rotationalDispersion}
             </if>
         </where>
     </select>
