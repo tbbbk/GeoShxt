@@ -20,7 +20,7 @@ public class MainController implements Initializable {
     private Button create;
 
     @FXML
-    private Button search;
+    private Button list;
 
     @FXML
     void create(ActionEvent event)  throws Exception{
@@ -41,10 +41,18 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    void search(ActionEvent event) {
+    void list(ActionEvent event) {
         Thread thread = new Thread(() -> {
             Platform.runLater(() -> {
-                this.create.setText("fuck you");
+                try {
+                Stage stage = (Stage) this.create.getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/MineralList.fxml"));
+                Pane root = fxmlLoader.load();
+                stage.setScene(new Scene(root, 646, 467));
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             });
         });
         thread.start();

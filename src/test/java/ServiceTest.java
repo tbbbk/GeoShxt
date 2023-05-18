@@ -8,6 +8,11 @@ import service.HomogeneousMineralService;
 
 public class ServiceTest {
     @Test
+    public void TestID() {
+        HeterogeneousMineral heterogeneousMineral = new HeterogeneousMineral();
+        System.out.println(heterogeneousMineral.getId());
+    }
+    @Test
     public void HeterogeneousMineralServiceTest() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
         HeterogeneousMineralService heterogeneousMineralService = (HeterogeneousMineralService) context.getBean("HeterogeneousMineralService");

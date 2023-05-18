@@ -1,5 +1,7 @@
 package entity;
 
+import service.HeterogeneousMineralService;
+
 //非均质
 public class HeterogeneousMineral {
     private int id;
@@ -163,6 +165,10 @@ public class HeterogeneousMineral {
 
 
     public HeterogeneousMineral() {
+    }
+
+    public HeterogeneousMineral(Integer id) {
+        this.id = id;
     }
 
     public HeterogeneousMineral(String name, String homoOrHeter, String reflectanceVisualInspectionLevel, String visualClassificationOfReflectivity, String doubleReflection, String internalReflection, String markHardness, String mohsHardness, String vickersHardness, String rotation, String match, String lightSymbol, String non_HomogeneousViewRotationAngle, String dispersion, String non_HomogeneousVisualRotationColor) {

@@ -62,7 +62,8 @@
     </select>
 
     <select id="selectByCondition" resultType="entity.HeterogeneousMineral" parameterType="entity.HeterogeneousMineral">
-        SELECT mineralName as name,
+        SELECT id,
+        mineralName as name,
         homoOrHeter,
         reflectanceVisualInspectionLevel,
         visualClassificationOfReflectivity,
@@ -79,6 +80,9 @@
         non_HomogeneousVisualRotationColor
         FROM heterogeneousMineral
         <where>
+            <if test="id != 0">
+                AND id = #{id}
+            </if>
             <if test="name != null">
                 AND mineralName = #{name}
             </if>

@@ -52,7 +52,8 @@
     </select>
 
     <select id="selectByCondition" resultType="entity.HomogeneousMineral" parameterType="entity.HomogeneousMineral">
-        SELECT mineralName as name,
+        SELECT id,
+        mineralName as name,
         heterOrHomo,
         reflectanceVisualInspectionLevel,
         visualClassificationOfReflectivity,
@@ -65,6 +66,9 @@
         Dispersion
         FROM homogeneousMineral
         <where>
+            <if test="id != 0">
+                AND id = #{id}
+            </if>
             <if test="name != null">
                 AND mineralName = #{name}
             </if>

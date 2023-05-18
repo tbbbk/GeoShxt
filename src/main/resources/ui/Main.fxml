@@ -12,5 +12,5 @@
       </font>
    </Text>
    <Button fx:id="create" layoutX="103.0" layoutY="238.0" mnemonicParsing="false" onAction="#create" prefHeight="27.0" prefWidth="56.0" text="新增" />
-   <Button fx:id="search" layoutX="315.0" layoutY="238.0" mnemonicParsing="false" onAction="#search" text="搜索" />
+   <Button fx:id="list" layoutX="315.0" layoutY="238.0" mnemonicParsing="false" onAction="#list" text="矿物列表" />
 </AnchorPane>

@@ -123,6 +123,10 @@ public class HomogeneousMineral {
     public HomogeneousMineral() {
     }
 
+    public HomogeneousMineral(Integer id) {
+        this.id = id;
+    }
+
     public HomogeneousMineral(String name, String heterOrHomo, String reflectanceVisualInspectionLevel, String visualClassificationOfReflectivity, String doubleReflection, String internalReflection, String markHardness, String mohsHardness, String vickersHardness, String reflectionRotationAngle, String dispersion) {
         this.name = name;
         this.heterOrHomo = heterOrHomo;

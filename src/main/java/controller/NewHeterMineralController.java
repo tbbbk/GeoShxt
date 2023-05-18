@@ -170,10 +170,10 @@ public class NewHeterMineralController implements Initializable {
                     e.printStackTrace();
                 }
                 if (result != 1) {
-                    show("failure");
+                    show("Failure");
                     this.clear(event);
                 } else {
-                    show("success");
+                    show("Success");
                     this.clear(event);
                 }
             }
