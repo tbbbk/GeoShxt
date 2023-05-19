@@ -36,7 +36,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MineralListController implements Initializable {
-    private static ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
+    private static final ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
+
+    private static final HeterogeneousMineralService heterogeneousMineralService = (HeterogeneousMineralService) context.getBean("heterogeneousMineralService");
+
+    private static final HomogeneousMineralService homogeneousMineralService = (HomogeneousMineralService) context.getBean("homogeneousMineralService");
+
+    public static Object[] pattern = new Object[2];
 
     @FXML // fx:id="Dispersion"
     private TextField Dispersion; // Value injected by FXMLLoader
@@ -150,7 +156,6 @@ public class MineralListController implements Initializable {
                     heterogeneousMineral.setNon_HomogeneousViewRotationAngle(non_HomogeneousViewRotationAngle.getText().equals("") ? null : non_HomogeneousViewRotationAngle.getText());
                     heterogeneousMineral.setDispersion(Dispersion.getText().equals("") ? null : Dispersion.getText());
                     heterogeneousMineral.setNon_HomogeneousVisualRotationColor(non_HomogeneousVisualRotationColor.getText().equals("") ? null : non_HomogeneousVisualRotationColor.getText());
-                    HeterogeneousMineralService heterogeneousMineralService = (HeterogeneousMineralService) context.getBean("heterogeneousMineralService");
                     //开始查询
                     List<HeterogeneousMineral> heterogeneousMineralList = heterogeneousMineralService.selectByCondition(heterogeneousMineral);
                     //添加数据 绑定数据
@@ -170,6 +175,7 @@ public class MineralListController implements Initializable {
                             System.out.println(id);
                             //获取点击对象
                             System.out.println(heterogeneousMineralService.selectByCondition(new HeterogeneousMineral(id)).get(0));
+                            mineralNewWindow("HeterogeneousMineral", id);
                         }
                     });
                 } else if (h2.equals("均质")) {
@@ -186,7 +192,6 @@ public class MineralListController implements Initializable {
                     homogeneousMineral.setReflectionRotationAngle(reflectionRotationAngle.getText().equals("") ? null : reflectionRotationAngle.getText());
                     homogeneousMineral.setDispersion(Dispersion.getText().equals("") ? null : Dispersion.getText());
                     //开始查询
-                    HomogeneousMineralService homogeneousMineralService = (HomogeneousMineralService) context.getBean("homogeneousMineralService");
                     List<HomogeneousMineral> homogeneousMineralList = homogeneousMineralService.selectByCondition(homogeneousMineral);
                     //添加数据 绑定数据
                     resultHomoList.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -205,7 +210,7 @@ public class MineralListController implements Initializable {
                             System.out.println(id);
                             //获取点击对象
                             System.out.println(homogeneousMineralService.selectByCondition(new HomogeneousMineral(id)).get(0));
-
+                            mineralNewWindow("HomogeneousMineral", id);
                         }
                     });
                 }
@@ -238,10 +243,32 @@ public class MineralListController implements Initializable {
 
     /**
      * 显示矿物详情
-     * TODO:实现这里
      */
-    public void mineralNewWindow(String mineralDetails, Object mineral) {
-
+    public void mineralNewWindow(String mineralDetails, int id) {
+        Object mineral;
+        if (mineralDetails.equals("HeterogeneousMineral")) {
+            mineral = heterogeneousMineralService.selectByCondition(new HeterogeneousMineral(id)).get(0);
+        } else if (mineralDetails.equals("HomogeneousMineral")) {
+            mineral = homogeneousMineralService.selectByCondition(new HomogeneousMineral(id)).get(0);
+        } else {
+            mineral = null;
+        }
+        Thread thread = new Thread(() -> {
+            Platform.runLater(() -> {
+                try {
+                    pattern[0] = mineral;
+                    pattern[1] = mineralDetails;
+                    AnchorPane root = FXMLLoader.load(getClass().getResource("/ui/MineralDetails.fxml"));
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root, 701, 446));
+                    stage.setResizable(false);
+                    stage.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        });
+        thread.start();
     }
 
     @Override
