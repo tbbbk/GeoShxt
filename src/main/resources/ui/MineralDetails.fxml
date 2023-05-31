@@ -16,10 +16,6 @@
             <Font size="38.0" />
          </font>
       </Text>
-      <Button fx:id="play" layoutX="32.0" layoutY="364.0" mnemonicParsing="false" onAction="#play" prefHeight="65.0" prefWidth="160.0" text="播放视频">
-         <font>
-            <Font name="System Bold Italic" size="20.0" />
-         </font></Button>
       <VBox fx:id="heter" alignment="CENTER" disable="true" layoutX="224.0" layoutY="31.0" prefHeight="438.0" prefWidth="375.0">
          <children>
             <HBox alignment="CENTER" prefHeight="36.0" prefWidth="250.0">
@@ -126,5 +122,15 @@
             </HBox>
          </children>
       </VBox>
+      <Button fx:id="play" layoutX="30.0" layoutY="380.0" mnemonicParsing="false" onAction="#playVideo" prefHeight="48.0" prefWidth="152.0" text="播放视频 ">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="showImg" layoutX="30.0" layoutY="307.0" mnemonicParsing="false" onAction="#showImage" prefHeight="48.0" prefWidth="152.0" text="查看图片">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

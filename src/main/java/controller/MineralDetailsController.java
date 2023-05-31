@@ -5,17 +5,25 @@ import entity.HomogeneousMineral;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.springframework.beans.support.PagedListHolder;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MineralDetailsController implements Initializable {
+    public static String mineralName;
 
     @FXML // fx:id="Dispersion"
     private TextField Dispersion; // Value injected by FXMLLoader
@@ -74,9 +82,42 @@ public class MineralDetailsController implements Initializable {
     @FXML // fx:id="play"
     private Button play; // Value injected by FXMLLoader
 
+    @FXML // fx:id="showImg"
+    private Button showImg; // Value injected by FXMLLoader
     @FXML
-    void play(ActionEvent event) {
+    void playVideo(ActionEvent event) {
+        Thread thread = new Thread(() -> {
+            Platform.runLater(() -> {
+                try {
+                    AnchorPane root = FXMLLoader.load(MineralDetailsController.class.getResource("/ui/Video.fxml"));
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root, 601, 455));
+                    stage.setResizable(false);
+                    stage.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        });
+        thread.start();
+    }
 
+    @FXML
+    void showImage(ActionEvent event) {
+        Thread thread = new Thread(() -> {
+            Platform.runLater(() -> {
+                try {
+                    AnchorPane root = FXMLLoader.load(MineralDetailsController.class.getResource("/ui/Image.fxml"));
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root, 600, 400));
+                    stage.setResizable(false);
+                    stage.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        });
+        thread.start();
     }
 
     @Override
@@ -86,6 +127,7 @@ public class MineralDetailsController implements Initializable {
             if (type.equals("HeterogeneousMineral")) {
                 HeterogeneousMineral heterogeneousMineral = (HeterogeneousMineral) MineralListController.pattern[0];
                 name.setText(heterogeneousMineral.getName());
+                mineralName = heterogeneousMineral.getName();
                 homoheter.setText(heterogeneousMineral.getHomoOrHeter());
                 reflectanceVisualInspectionLevel.setText(heterogeneousMineral.getReflectanceVisualInspectionLevel());
                 visualClassificationOfReflectivity.setText(heterogeneousMineral.getVisualClassificationOfReflectivity());
@@ -105,6 +147,7 @@ public class MineralDetailsController implements Initializable {
             } else if (type.equals("HomogeneousMineral")) {
                 HomogeneousMineral homogeneousMineral = (HomogeneousMineral) MineralListController.pattern[0];
                 name.setText(homogeneousMineral.getName());
+                mineralName = homogeneousMineral.getName();
                 homoheter.setText(homogeneousMineral.getHeterOrHomo());
                 reflectanceVisualInspectionLevel.setText(homogeneousMineral.getReflectanceVisualInspectionLevel());
                 visualClassificationOfReflectivity.setText(homogeneousMineral.getVisualClassificationOfReflectivity());

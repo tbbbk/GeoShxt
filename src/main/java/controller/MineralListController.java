@@ -23,6 +23,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -260,6 +261,7 @@ public class MineralListController implements Initializable {
                     pattern[1] = mineralDetails;
                     AnchorPane root = FXMLLoader.load(MineralListController.class.getResource("/ui/MineralDetails.fxml"));
                     Stage stage = new Stage();
+                    stage.initModality(Modality.APPLICATION_MODAL);
                     stage.setScene(new Scene(root, 701, 500));
                     stage.setResizable(false);
                     stage.show();

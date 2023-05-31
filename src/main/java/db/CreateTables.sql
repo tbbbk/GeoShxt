@@ -1,4 +1,3 @@
-CREATE DATABASE mineral;
 USE mineral;
 CREATE TABLE IF NOT EXISTS `heterogeneousMineral`
 (

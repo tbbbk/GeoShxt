@@ -1,17 +1,50 @@
 import entity.HeterogeneousMineral;
 import entity.HomogeneousMineral;
+import org.apache.poi.ss.usermodel.*;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.HeterogeneousMineralService;
 import service.HomogeneousMineralService;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class ServiceTest {
+    @Test
+    public void injectData() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
+        HomogeneousMineralService homogeneousMineralService = (HomogeneousMineralService) context.getBean("homogeneousMineralService");
+        String filePath = "src/main/resources/data/衔石填海-非均质矿物表.xlsx";
+        String arg[] = new String[11];
+        // 非均质
+        try {
+            FileInputStream fis = new FileInputStream(filePath);
+            Workbook workbook = WorkbookFactory.create(fis);
+            DataFormatter dataFormatter = new DataFormatter();
+            // 获取第一个Sheet
+            Sheet sheet = workbook.getSheetAt(1);
+            for (int i = 18; i < 19; i++) {
+                for (int j = 0; j <11; j++) {
+                    // 获取指定位置的单元格
+                    arg[j] = dataFormatter.formatCellValue(sheet.getRow(i).getCell(j));
+                }
+                HomogeneousMineral homogeneousMineral = new HomogeneousMineral(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7], arg[8], arg[9], arg[10], arg[0]);
+                System.out.println(homogeneousMineral);
+                homogeneousMineralService.insert(homogeneousMineral);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Test
     public void TestID() {
         HeterogeneousMineral heterogeneousMineral = new HeterogeneousMineral();
         System.out.println(heterogeneousMineral.getId());
     }
+
     @Test
     public void HeterogeneousMineralServiceTest() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
