@@ -20,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -34,6 +33,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 public class MineralListController implements Initializable {
     private static final ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
@@ -244,7 +244,7 @@ public class MineralListController implements Initializable {
     /**
      * 显示矿物详情
      */
-    public void mineralNewWindow(String mineralDetails, int id) {
+    public static void mineralNewWindow(String mineralDetails, int id) {
         Object mineral;
         if (mineralDetails.equals("HeterogeneousMineral")) {
             mineral = heterogeneousMineralService.selectByCondition(new HeterogeneousMineral(id)).get(0);
@@ -258,9 +258,9 @@ public class MineralListController implements Initializable {
                 try {
                     pattern[0] = mineral;
                     pattern[1] = mineralDetails;
-                    AnchorPane root = FXMLLoader.load(getClass().getResource("/ui/MineralDetails.fxml"));
+                    AnchorPane root = FXMLLoader.load(MineralListController.class.getResource("/ui/MineralDetails.fxml"));
                     Stage stage = new Stage();
-                    stage.setScene(new Scene(root, 701, 446));
+                    stage.setScene(new Scene(root, 701, 500));
                     stage.setResizable(false);
                     stage.show();
                 } catch (Exception e) {

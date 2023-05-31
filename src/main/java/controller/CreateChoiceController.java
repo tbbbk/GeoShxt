@@ -54,7 +54,7 @@ public class CreateChoiceController {
                                 Stage stage = (Stage) this.back.getScene().getWindow();
                                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/NewHomoMineral.fxml"));
                                 Pane root = fxmlLoader.load();
-                                stage.setScene(new Scene(root, 600, 400));
+                                stage.setScene(new Scene(root, 600, 500));
                                 stage.show();
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
@@ -69,7 +69,7 @@ public class CreateChoiceController {
                                 Stage stage = (Stage) this.back.getScene().getWindow();
                                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui/NewHeterMineral.fxml"));
                                 Pane root = fxmlLoader.load();
-                                stage.setScene(new Scene(root, 600, 500));
+                                stage.setScene(new Scene(root, 600, 600));
                                 stage.show();
                             } catch (IOException e) {
                                 throw new RuntimeException(e);

@@ -23,6 +23,15 @@ public class HomogeneousMineral {
     private String reflectionRotationAngle;
     //色散
     private String Dispersion;
+    private String info;
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
 
     public String getHeterOrHomo() {
         return heterOrHomo;
@@ -127,7 +136,11 @@ public class HomogeneousMineral {
         this.id = id;
     }
 
-    public HomogeneousMineral(String name, String heterOrHomo, String reflectanceVisualInspectionLevel, String visualClassificationOfReflectivity, String doubleReflection, String internalReflection, String markHardness, String mohsHardness, String vickersHardness, String reflectionRotationAngle, String dispersion) {
+    public HomogeneousMineral(String name) {
+        this.name = name;
+    }
+
+    public HomogeneousMineral(String name, String heterOrHomo, String reflectanceVisualInspectionLevel, String visualClassificationOfReflectivity, String doubleReflection, String internalReflection, String markHardness, String mohsHardness, String vickersHardness, String reflectionRotationAngle, String dispersion, String info) {
         this.name = name;
         this.heterOrHomo = heterOrHomo;
         this.reflectanceVisualInspectionLevel = reflectanceVisualInspectionLevel;
@@ -139,6 +152,7 @@ public class HomogeneousMineral {
         this.vickersHardness = vickersHardness;
         this.reflectionRotationAngle = reflectionRotationAngle;
         Dispersion = dispersion;
+        this.info = info;
     }
 
     @Override
@@ -156,6 +170,7 @@ public class HomogeneousMineral {
                 ", vickersHardness='" + vickersHardness + '\'' +
                 ", reflectionRotationAngle='" + reflectionRotationAngle + '\'' +
                 ", Dispersion='" + Dispersion + '\'' +
+                ", info='" + info + '\'' +
                 '}';
     }
 }

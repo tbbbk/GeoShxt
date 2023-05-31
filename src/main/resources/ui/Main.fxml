@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
-   <Text fill="#a92d2d" fontSmoothingType="LCD" layoutX="44.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="察岩观色——岩矿辅助鉴定系统" textAlignment="CENTER" wrappingWidth="378.5">
+<AnchorPane cache="true" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+   <Text fill="#a92d2d" fontSmoothingType="LCD" layoutX="60.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="察岩观色——岩矿辅助鉴定系统" textAlignment="CENTER" wrappingWidth="378.5">
       <font>
          <Font name="Z003-MediumItalic" size="26.0" />
       </font>
    </Text>
-   <Button fx:id="create" layoutX="103.0" layoutY="238.0" mnemonicParsing="false" onAction="#create" prefHeight="27.0" prefWidth="56.0" text="新增" />
-   <Button fx:id="list" layoutX="315.0" layoutY="238.0" mnemonicParsing="false" onAction="#list" text="矿物列表" />
+   <Button fx:id="create" layoutX="93.0" layoutY="404.0" mnemonicParsing="false" onAction="#create" prefHeight="48.0" prefWidth="91.0" text="新增" />
+   <Button fx:id="list" layoutX="280.0" layoutY="404.0" mnemonicParsing="false" onAction="#list" prefHeight="48.0" prefWidth="91.0" text="矿物列表" />
+   <ImageView fitHeight="27.0" fitWidth="27.0" layoutX="157.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/search.png" />
+      </image>
+   </ImageView>
+   <TextField fx:id="search" layoutX="184.0" layoutY="94.0" onKeyPressed="#enterSearch" prefHeight="27.0" prefWidth="178.0" promptText="按照矿物名称查找" />
+   <ImageView fitHeight="259.0" fitWidth="121.0" layoutX="8.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/main_1.jpg" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="215.0" fitWidth="121.0" layoutX="129.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/main_2.jpg" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="215.0" fitWidth="121.0" layoutX="250.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/main_3.jpg" />
+      </image>
+   </ImageView>
+   <ImageView fitHeight="215.0" fitWidth="148.0" layoutX="371.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../image/main_4.jpg" />
+      </image>
+   </ImageView>
 </AnchorPane>

@@ -1,3 +1,4 @@
+CREATE DATABASE mineral;
 USE mineral;
 CREATE TABLE IF NOT EXISTS `heterogeneousMineral`
 (
@@ -17,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `heterogeneousMineral`
     `non_HomogeneousViewRotationAngle`   varchar(255),
     `Dispersion`                         varchar(255),
     `non_HomogeneousVisualRotationColor` varchar(255),
+    `info`                               varchar(255),
     PRIMARY KEY (`id`),
     UNIQUE (`mineralName`)
 ) ENGINE = InnoDB
@@ -36,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `homogeneousMineral`
     `vickersHardness`                    varchar(255),
     `reflectionRotationAngle`            varchar(255),
     `Dispersion`                         varchar(255),
+    `info`                               varchar(255),
     PRIMARY KEY (`id`),
     UNIQUE (`mineralName`)
 ) ENGINE = InnoDB

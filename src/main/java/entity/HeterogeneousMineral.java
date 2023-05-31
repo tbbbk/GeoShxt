@@ -35,6 +35,16 @@ public class HeterogeneousMineral {
     //非均质视旋转色散
     private String non_HomogeneousVisualRotationColor;
 
+    private String info;
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
     public String getHomoOrHeter() {
         return homoOrHeter;
     }
@@ -171,7 +181,11 @@ public class HeterogeneousMineral {
         this.id = id;
     }
 
-    public HeterogeneousMineral(String name, String homoOrHeter, String reflectanceVisualInspectionLevel, String visualClassificationOfReflectivity, String doubleReflection, String internalReflection, String markHardness, String mohsHardness, String vickersHardness, String rotation, String match, String lightSymbol, String non_HomogeneousViewRotationAngle, String dispersion, String non_HomogeneousVisualRotationColor) {
+    public HeterogeneousMineral(String name) {
+        this.name = name;
+    }
+
+    public HeterogeneousMineral(String name, String homoOrHeter, String reflectanceVisualInspectionLevel, String visualClassificationOfReflectivity, String doubleReflection, String internalReflection, String markHardness, String mohsHardness, String vickersHardness, String rotation, String match, String lightSymbol, String non_HomogeneousViewRotationAngle, String dispersion, String non_HomogeneousVisualRotationColor, String info) {
         this.name = name;
         this.homoOrHeter = homoOrHeter;
         this.reflectanceVisualInspectionLevel = reflectanceVisualInspectionLevel;
@@ -187,6 +201,7 @@ public class HeterogeneousMineral {
         this.non_HomogeneousViewRotationAngle = non_HomogeneousViewRotationAngle;
         this.Dispersion = dispersion;
         this.non_HomogeneousVisualRotationColor = non_HomogeneousVisualRotationColor;
+        this.info = info;
     }
 
     @Override
@@ -208,6 +223,7 @@ public class HeterogeneousMineral {
                 ", non_HomogeneousViewRotationAngle='" + non_HomogeneousViewRotationAngle + '\'' +
                 ", Dispersion='" + Dispersion + '\'' +
                 ", non_HomogeneousVisualRotationColor='" + non_HomogeneousVisualRotationColor + '\'' +
+                ", info='" + info + '\'' +
                 '}';
     }
 }

@@ -7,10 +7,10 @@
     <insert id="insert" parameterType="entity.HomogeneousMineral" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO homogeneousMineral
         (mineralName, heterOrHomo, reflectanceVisualInspectionLevel, visualClassificationOfReflectivity,
-         doubleReflection, internalReflection, markHardness, mohsHardness, vickersHardness, reflectionRotationAngle, Dispersion)
+         doubleReflection, internalReflection, markHardness, mohsHardness, vickersHardness, reflectionRotationAngle, Dispersion, info)
         VALUES (#{name}, #{heterOrHomo}, #{reflectanceVisualInspectionLevel}, #{visualClassificationOfReflectivity},
                 #{doubleReflection}, #{internalReflection}, #{markHardness}, #{mohsHardness}, #{vickersHardness},
-                #{reflectionRotationAngle}, #{Dispersion})
+                #{reflectionRotationAngle}, #{Dispersion}, #{info})
     </insert>
 
     <update id="update" parameterType="entity.HomogeneousMineral">
@@ -26,7 +26,8 @@
             mohsHardness=#{mohsHardness},
             vickersHardness=#{vickersHardness},
             reflectionRotationAngle=#{reflectionRotationAngle},
-            Dispersion=#{Dispersion}
+            Dispersion=#{Dispersion},
+            info=#{info}
         WHERE mineralName = #{name}
     </update>
 
@@ -47,7 +48,8 @@
                mohsHardness,
                vickersHardness,
                reflectionRotationAngle,
-               Dispersion
+               Dispersion,
+               info
         FROM homogeneousMineral
     </select>
 
@@ -63,7 +65,8 @@
         mohsHardness,
         vickersHardness,
         reflectionRotationAngle,
-        Dispersion
+        Dispersion,
+        info
         FROM homogeneousMineral
         <where>
             <if test="id != 0">
@@ -101,6 +104,9 @@
             </if>
             <if test="Dispersion != null">
                 AND Dispersion = #{Dispersion}
+            </if>
+            <if test="info != null">
+                AND info = #{info}
             </if>
         </where>
     </select>

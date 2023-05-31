@@ -8,11 +8,11 @@
         INSERT INTO heterogeneousMineral
         (mineralName, homoOrHeter,reflectanceVisualInspectionLevel, visualClassificationOfReflectivity, doubleReflection,
          internalReflection, markHardness, mohsHardness, vickersHardness, Rotation, _Match, lightSymbol,
-         non_HomogeneousViewRotationAngle, Dispersion, non_HomogeneousVisualRotationColor)
+         non_HomogeneousViewRotationAngle, Dispersion, non_HomogeneousVisualRotationColor, info)
         VALUES (#{name}, #{homoOrHeter}, #{reflectanceVisualInspectionLevel}, #{visualClassificationOfReflectivity},
                 #{doubleReflection}, #{internalReflection}, #{markHardness}, #{mohsHardness}, #{vickersHardness},
                 #{Rotation}, #{Match}, #{lightSymbol}, #{non_HomogeneousViewRotationAngle}, #{Dispersion},
-                #{non_HomogeneousVisualRotationColor})
+                #{non_HomogeneousVisualRotationColor}, #{info})
     </insert>
 
     <update id="update" parameterType="dao.HeterogeneousMineralDAO">
@@ -32,7 +32,8 @@
             lightSymbol=#{lightSymbol},
             non_HomogeneousViewRotationAngle=#{non_HomogeneousViewRotationAngle},
             dispersion=#{Dispersion},
-            non_HomogeneousVisualRotationColor=#{non_HomogeneousVisualRotationColor}
+            non_HomogeneousVisualRotationColor=#{non_HomogeneousVisualRotationColor},
+            info=#{info}
         WHERE mineralName = #{name}
     </update>
 
@@ -57,7 +58,8 @@
                lightSymbol,
                non_HomogeneousViewRotationAngle,
                Dispersion,
-               non_HomogeneousVisualRotationColor
+               non_HomogeneousVisualRotationColor,
+               info
         FROM heterogeneousMineral
     </select>
 
@@ -77,7 +79,8 @@
         lightSymbol,
         non_HomogeneousViewRotationAngle,
         Dispersion,
-        non_HomogeneousVisualRotationColor
+        non_HomogeneousVisualRotationColor,
+        info
         FROM heterogeneousMineral
         <where>
             <if test="id != 0">
@@ -129,6 +132,9 @@
             <if test="non_HomogeneousVisualRotationColor != null">
                 AND non_HomogeneousVisualRotationColor =
                 #{non_HomogeneousVisualRotationColor}
+            </if>
+            <if test="info != null">
+                AND info = #{info}
             </if>
         </where>
     </select>

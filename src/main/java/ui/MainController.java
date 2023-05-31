@@ -5,13 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-import java.util.HashMap;
-import java.util.Map;
+import javafx.scene.media.Media;
 
 public class MainController extends Application {
-    public static Map<String, Object> controller = new HashMap<String, Object>();
-
     public static void main(String[] args) {
         Application.launch(args);
     }
@@ -25,3 +21,4 @@ public class MainController extends Application {
         primaryStage.show();
     }
 }
+

@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -68,6 +69,9 @@ public class NewHomoMineralController implements Initializable {
     @FXML // fx:id="visualClassificationOfReflectivity"
     private TextField visualClassificationOfReflectivity; // Value injected by FXMLLoader
 
+    @FXML // fx:id="info"
+    private TextArea info; // Value injected by FXMLLoader
+
     /**
      * 返回上一页面
      *
@@ -110,6 +114,7 @@ public class NewHomoMineralController implements Initializable {
             vickersHardness.clear();
             reflectionRotationAngle.clear();
             Dispersion.clear();
+            info.clear();
         });
         thread.start();
     }
@@ -133,11 +138,13 @@ public class NewHomoMineralController implements Initializable {
                     mohsHardness.getText(),
                     vickersHardness.getText(),
                     reflectanceVisualInspectionLevel.getText(),
-                    Dispersion.getText()};
+                    Dispersion.getText(),
+                    info.getText()
+            };
             if (arg[0].equals("")) {
                 show("IncompleteAlert");
             } else {
-                HomogeneousMineral homogeneousMineral = new HomogeneousMineral(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7], arg[8], arg[9], arg[10]);
+                HomogeneousMineral homogeneousMineral = new HomogeneousMineral(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7], arg[8], arg[9], arg[10], arg[11]);
                 ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
                 HomogeneousMineralService homogeneousMineralService = (HomogeneousMineralService) context.getBean("homogeneousMineralService");
                 int result = 0;

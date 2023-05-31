@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -82,6 +83,9 @@ public class NewHeterMineralController implements Initializable {
     @FXML // fx:id="visualClassificationOfReflectivity"
     private TextField visualClassificationOfReflectivity; // Value injected by FXMLLoader
 
+    @FXML // fx:id="info"
+    private TextArea info; // Value injected by FXMLLoader
+
     /**
      * 返回上一页面
      *
@@ -128,6 +132,7 @@ public class NewHeterMineralController implements Initializable {
             non_HomogeneousViewRotationAngle.clear();
             Dispersion.clear();
             non_HomogeneousVisualRotationColor.clear();
+            info.clear();
         });
         thread.start();
     }
@@ -155,12 +160,13 @@ public class NewHeterMineralController implements Initializable {
                     lightSymbol.getText(),
                     non_HomogeneousViewRotationAngle.getText(),
                     Dispersion.getText(),
-                    non_HomogeneousVisualRotationColor.getText()
+                    non_HomogeneousVisualRotationColor.getText(),
+                    info.getText()
             };
             if (arg[0].equals("")) {
                 show("IncompleteAlert");
             } else {
-                HeterogeneousMineral heterogeneousMineral = new HeterogeneousMineral(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7], arg[8], arg[9], arg[10], arg[11], arg[12], arg[13], arg[14]);
+                HeterogeneousMineral heterogeneousMineral = new HeterogeneousMineral(arg[0], arg[1], arg[2], arg[3], arg[4], arg[5], arg[6], arg[7], arg[8], arg[9], arg[10], arg[11], arg[12], arg[13], arg[14], arg[15]);
                 ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
                 HeterogeneousMineralService heterogeneousMineralService = (HeterogeneousMineralService) context.getBean("heterogeneousMineralService");
                 int result = 0;
@@ -181,10 +187,10 @@ public class NewHeterMineralController implements Initializable {
         thread.start();
     }
 
-    public void show(String s) {
+    public static void show(String s) {
         Platform.runLater(() -> {
             try {
-                AnchorPane root = FXMLLoader.load(getClass().getResource("/ui/" + s + ".fxml"));
+                AnchorPane root = FXMLLoader.load(NewHeterMineralController.class.getResource("/ui/" + s + ".fxml"));
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root, 200, 200));
                 stage.setResizable(false);

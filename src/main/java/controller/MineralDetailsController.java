@@ -3,8 +3,11 @@ package controller;
 import entity.HeterogeneousMineral;
 import entity.HomogeneousMineral;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.springframework.beans.support.PagedListHolder;
@@ -65,6 +68,16 @@ public class MineralDetailsController implements Initializable {
     @FXML // fx:id="visualClassificationOfReflectivity"
     private TextField visualClassificationOfReflectivity; // Value injected by FXMLLoader
 
+    @FXML // fx:id="info"
+    private TextArea info; // Value injected by FXMLLoader
+
+    @FXML // fx:id="play"
+    private Button play; // Value injected by FXMLLoader
+
+    @FXML
+    void play(ActionEvent event) {
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -87,6 +100,7 @@ public class MineralDetailsController implements Initializable {
                 non_HomogeneousViewRotationAngle.setText(heterogeneousMineral.getNon_HomogeneousViewRotationAngle());
                 Dispersion.setText(heterogeneousMineral.getDispersion());
                 non_HomogeneousVisualRotationColor.setText(heterogeneousMineral.getNon_HomogeneousVisualRotationColor());
+                info.setText(heterogeneousMineral.getInfo());
                 System.out.println(heterogeneousMineral + "fuck");
             } else if (type.equals("HomogeneousMineral")) {
                 HomogeneousMineral homogeneousMineral = (HomogeneousMineral) MineralListController.pattern[0];
@@ -101,6 +115,7 @@ public class MineralDetailsController implements Initializable {
                 vickersHardness.setText(homogeneousMineral.getVickersHardness());
                 reflectionRotationAngle.setText(homogeneousMineral.getReflectionRotationAngle());
                 Dispersion.setText(homogeneousMineral.getDispersion());
+                info.setText(homogeneousMineral.getInfo());
                 System.out.println(homogeneousMineral + "fuck");
             }
         });
