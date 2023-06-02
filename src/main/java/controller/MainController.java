@@ -16,6 +16,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.core.io.FileSystemResource;
 import service.HeterogeneousMineralService;
 import service.HomogeneousMineralService;
 
@@ -25,7 +27,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-    private static final ApplicationContext context = new ClassPathXmlApplicationContext("classpath:SpringConfig.xml");
+    static String basePath = System.getProperty("user.dir"); // 获取当前工作目录的路径
+    static String filePath = basePath + "\\src\\main\\resources\\SpringConfig.xml"; // 构建绝对路径
+    static FileSystemResource configFile = new FileSystemResource(filePath);
+    private static final ApplicationContext context = new FileSystemXmlApplicationContext(configFile.getPath());
+//    private static final ApplicationContext context = new ClassPathXmlApplicationContext("SpringConfig.xml");
 
     private static final HeterogeneousMineralService heterogeneousMineralService = (HeterogeneousMineralService) context.getBean("heterogeneousMineralService");
 
