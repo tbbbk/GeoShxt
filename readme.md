@@ -15,4 +15,9 @@
 - [x] 数据库建表
 - [x] DAO层
 - [x] Service层
-- [ ] 前端：JavaFX
+- [x] 前端：JavaFX
+
+# 运行指令
+```shell
+mvn clean javafx:run
+```
